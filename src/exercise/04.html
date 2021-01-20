@@ -33,10 +33,10 @@
     }
 
     const element = (
-      <div className="container">
-        <Message greeting={5} subject={4} />
-        <Message greeting={4} subject="World" />
-      </div>
+      <React.Fragment>
+        <Message greeting="World" subject="World" />
+        <Message greeting="Goodbye" subject="World" />
+      </React.Fragment>
     )
 
     ReactDOM.render(element, document.getElementById('root'))
