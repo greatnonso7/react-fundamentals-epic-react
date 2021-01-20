@@ -6,16 +6,36 @@
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js" ></script>
   <script type="text/babel">
-    function message({ children }) {
-      return <div className="message">{children}</div>;
+    // const PropTypes = {
+    //   string(props, propName, componentName) {
+    //     const type = props[propName];
+    //     if(type !== "string") {
+    //       return new Error (
+    //         `Hey, the component ${componentName} needs the prop ${propName} to be a string but was passed a ${type}`
+    //       ) 
+    //     }
+    //   }
+    // }
+
+    function Message({ subject, greeting }) {
+      return ( 
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      );
     }
-    
+
+    Message.propTypes = {
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
+    }
 
     const element = (
       <div className="container">
-        {message({ children: 'Hello World' })}
-        {message({ children: 'Goodbye World' })}
+        <Message greeting={5} subject={4} />
+        <Message greeting={4} subject="World" />
       </div>
     )
 
